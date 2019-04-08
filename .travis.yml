@@ -1,0 +1,11 @@
+language: julia
+os:
+    - linux
+    - osx
+julia:
+    - 0.4
+sudo: false
+notifications:
+    email: false
+    after_success:
+    - julia -e 'cd(Pkg.dir("MolecularPDB")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
